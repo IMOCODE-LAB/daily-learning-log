@@ -4,11 +4,11 @@
 ## 概要 / Overview
 
 このリポジトリは、K4ppy（カッピー）による  
-**Python・AI・自動化スクリプト・Termuxの学習記録**です。  
+**Python・AI（ML DL DS）・自動化スクリプト・Termuxの学習記録**です。  
 毎日1つ以上の小さな学び・実験・気づきを、Issue形式で記録しています。
 
-This repository is a **daily learning journal** by K4ppy,  
-documenting experiments and progress in **Python, AI, automation, and Termux**.  
+This repository is a **daily learning log** by K4ppy,  
+documenting experiments and progress in **Python, AI[ML DL DS], automation, and Termux**.  
 Each day’s log is written as an Issue, capturing thoughts, discoveries, and challenges.
 
 ---
