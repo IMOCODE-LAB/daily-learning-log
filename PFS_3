@@ -1,0 +1,25 @@
+# 🐣 Predict Future Sales 修行ログ - Day 3
+
+## ✅ 本日の進捗
+- `monthly_shop_item_cnt` をベースに、ラグ特徴量（lag_1 / lag_2）を作成
+- メモリ対策として `date_block_num` を4か月分に制限 → **成功🎉**
+
+## 🧠 得られた学び
+- `groupby → agg → merge` の集計パターンをマスター
+- `lag特徴量` の作成には大量メモリが必要！ → 小分け対応が有効
+- `date_block_num` をズラしてラグを作ることで、時系列情報を特徴量化できる！
+
+## 💡 次回やること
+- `train` / `test` に再分割して、学習データの準備を進める予定
+- モデル作成に向けて、必要な前処理を整理
+
+## 🧰 使用した関数（ラグ特徴量生成）
+```python
+def add_lag_feature(df, lags, col):
+    for lag in lags:
+        lag_col_name = f"{col}_lag_{lag}"
+        shifted = df[['date_block_num', 'shop_id', 'item_id', col]].copy()
+        shifted['date_block_num'] += lag
+        shifted.rename(columns={col: lag_col_name}, inplace=True)
+        df = df.merge(shifted, on=['date_block_num', 'shop_id', 'item_id'], how='left')
+    return df
